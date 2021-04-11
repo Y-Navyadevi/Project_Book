@@ -1,19 +1,20 @@
 <html>
     <head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         
-        <style>
+         <style>
             .header {
                 overflow: hidden;
-                background-color: #f1f1f1;
+                background-color: #e996fa;
                 padding: 20px 10px;
                 font-size: 18;
                 color: rebeccapurple;
-            }
-            body{
-                text-align: center;
-                background-color: powderblue;
-            }
-            input[type=text],input[type=email],input[type=password], select{
+            } 
+
+            
+            /* input[type=text],input[type=email],input[type=password], select{
                 
                 width: 60%;
                 padding: 15px 50px;
@@ -37,33 +38,34 @@
 
             button:hover {
                 background-color: #45a049;
-            }
+            } */
         
         
 
-        </style>
+        </style> 
     </head>
     <body>
-        <div class="header">
-            <h1>Registration Details</h1>
+        <div class="header" >
+            <h1 align= center>Registration Details</h1>
         </div>
-        <h2>Submit your details to register !!!</h2>
-        <form action="\submit" method="post">
+<div class="card p-5 bg-dark ">
+        <form action="\submit" method="post" align=center>
             <input type="text" name="name" placeholder="Enter your name" required><br><br>
             <input type="password" name="password" placeholder="Enter your password" required><br><br>
-            <input type="text" name="mobile" placeholder="Enter valid mobile number" required><br><br>
+            <input type="text" name="mobile" placeholder="Enter mobile number" required><br><br>
             <input type="date" name="dob" placeholder="Enter Date Of Birth" required><br><br>
             <input type="email" name="email" placeholder="Enter your Email" required><br><br>
             <input type="radio" id="male" name="gender" value="Male" >
-            <label for="male">Male</label>
+            <label for="male" style="color:white">Male</label>
             <input type="radio" id="female" name="gender" value="Female">
-            <label for="female">Female</label>
+            <label for="female"  style="color:white">Female</label>
             <input type="radio" id="other" name="gender" value="other">
-            <label for="other">Other</label><br><br>
+            <label for="other" style="color:white">Other</label><br><br>
 
             <button>Submit</button> 
 
         </form>
+    </div>
     </body>
     
 </html>       
