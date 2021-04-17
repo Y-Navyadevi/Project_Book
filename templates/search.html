@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    table 
+    {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 3px solid #0a0a0a;
+      text-align: left;
+      padding: 8px;
+    }
+ 
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+</style>
+</head>
+<body>
+  <h1><center>welcome {{name}}</center></h1>
+
+    <div class="search-container">
+        <form action="/search", method ='POST'>
+          <input type="text" placeholder="Search.." name="search">
+
+          <button class="col-sm-6"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+<h1><i>Book Details</h1></i>
+<table class="table">
+    <thead>
+       
+       <tr>
+          <th >Title</th>
+          <th>Author</th>
+          <th>Year</th>
+       </tr>
+    </thead>
+    <tbody>
+ 
+        <tr>
+
+         <td>{{title}}</td>
+         <td>{{author}}</td>
+         <td>{{year}}</td>
+      </tr>
+     </tbody>
+     <a class="button has-text-danger" href="{{ url_for('login') }}">
+      <strong>Exit to home page</strong>
+      </a>
+
+     <!-- <button class="col-sm-6"><a href="{{ url_for('home') }}" class="btn form-control btn-warning">Logout</a></button> -->
+</body>
+</html>

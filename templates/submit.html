@@ -1,13 +1,60 @@
-<html>
-    <head>
-    <h2>Details of a user</h2>
-    <ul style="list-style-type:disc;">
-       <li>Name = {{ name}}</li> 
-       <li>Password = {{password}}</li>
-       <li>DOB = {{dob}}</li>
-       <li>Mobile number = {{ mobile }}</li>
-       <li>Email = {{ email }}</li>
-       <li>Gender = {{ gender }}</li>
-    </ul>
+{% extends "layout.html"%}
+
+<head>
+    <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 3px solid #0a0a0a;
+      text-align: left;
+      padding: 8px;
+    }
+ 
+    </style>
     </head>
-</html>
+<body style="background:-webkit-linear-gradient(left, #ffff66 0%, #ff99cc 100%);"></body>
+
+
+{% block body %}
+
+
+<h1><i>Registered Details</h1></i>
+<table class="table">
+    <thead>
+       
+       <tr>
+          <th >Name</th>
+          <!-- <th >password</th> -->
+          <th>mobile</th>
+          <th>Date of Birth</th>
+          <th>email</th>
+          <th>gender</th>
+          <th>timestamp</th>
+        
+       </tr>
+    </thead>
+    
+    <tbody>
+       {% for user in users %}
+       <tr>
+        <td >{{ user.name }}</td>
+        <!-- <td >{{ user.password }}</td> -->
+        <td>{{user.mobile}}</td>
+        <td>{{user.dob}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.gender}}</td>
+        <td>{{user.timestamp}}</td>
+      
+     </tr>
+
+       {% endfor %}
+    </tbody>
+    
+ </table>
+    
+
+{% endblock %}

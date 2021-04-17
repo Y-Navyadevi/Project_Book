@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Home page
+{% endblock %}
+
+{% block body %}
+
+   <div> <h1>Hello {{names}} </h1>  </div>
+
+<div>
+    <h1><center>welcome {{name}}</center></h1>
+
+    <div class="search-container">
+        <form action="/search", method ='POST'>
+          <input type="text" placeholder="Search" name="search">
+          <button class="col-sm-6"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+<h1><i>Book Details</h1></i>
+<table class="table">
+    <thead>
+       
+       <tr>
+          <th >Title</th>
+          <th>Author</th>
+          <th>Year</th>
+       </tr>
+    </thead>
+    <tbody>
+      {% for i in users  %}
+         {% if i.isbn==name or i.author==name or i.title==name or i.year==name %}
+        <tr>
+
+         <td>{{i.title}}</td>
+         <td>{{i.author}}</td>
+         <td>{{i.year}}</td>
+
+      </tr>
+      {% endif %}
+         {% endfor %}
+     </tbody>
+     <a class="button has-text-danger" href="{{ url_for('login') }}">
+      <strong>Logout</strong>
+      </a>
+</div>
+{% endblock %}

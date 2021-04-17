@@ -8,7 +8,8 @@
             .header {
                 overflow: hidden;
                 background:-webkit-radial-gradient( #F8A4D8 , #6C63FF);
-;
+
+                text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
                 padding: 20px 10px;
                 font-size: 18;
                 color: rebeccapurple;
@@ -17,13 +18,14 @@
             
 
         </style> 
+        <title>Register</title>
     </head>
     <body>
         <div class="header" >
-            <h1 align= center>Registration Details</h1>
+            <h1 align= center >Registration Details</h1>
         </div>
 <div class="card p-5 bg-dark ">
-        <form action="\submit" method="post" align=center>
+        <form action="/submit" method="post" align=center>
             <input type="text" name="name" placeholder="Enter your name" required><br><br>
             <input type="password" name="password" placeholder="Enter your password" required><br><br>
             <input type="text" name="mobile" placeholder="Enter mobile number" required><br><br>

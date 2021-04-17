@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Home page
+{% endblock %}
+
+{% block body %}
+
+    <h1>Please check your details {{names}} </h1>
+
+    <a href="{{ url_for('index') }}"> 
+        <strong>Exit to home page</strong></a>
+        <br><br>
+        <a href="{{ url_for('register') }}"> 
+            <strong>If new User go to Registration Page</strong></a>
+
+{% endblock %}
