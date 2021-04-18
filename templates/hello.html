@@ -1,24 +1,27 @@
 {% extends "layout.html" %}
 
 {% block heading %}
-    Home page
+
 {% endblock %}
 
 {% block body %}
 
-   <div> <h1>Hello {{names}} </h1>  </div>
+   <div class="header" align=center> <h1>Hello {{names}} </h1>   </div>
+   <a class="button has-text-danger text-right" href="{{ url_for('login') }}">
+      <button type="button" class="btn btn-outline-info btn-lg ">Logout</button>
+      </a>
 
 <div>
-    <h1><center>welcome {{name}}</center></h1>
 
-    <div class="search-container">
+
+    <div class="search-container" align=center >
         <form action="/search", method ='POST'>
           <input type="text" placeholder="Search" name="search">
-          <button class="col-sm-6"><i class="fa fa-search"></i></button>
+          <button> Search </button>
         </form>
       </div>
 <h1><i>Book Details</h1></i>
-<table class="table">
+<table class="table table-striped">
     <thead>
        
        <tr>
@@ -40,8 +43,8 @@
       {% endif %}
          {% endfor %}
      </tbody>
-     <a class="button has-text-danger" href="{{ url_for('login') }}">
+     <!-- <a class="button has-text-danger" href="{{ url_for('login') }}">
       <strong>Logout</strong>
-      </a>
+      </a> -->
 </div>
 {% endblock %}

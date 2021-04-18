@@ -1,14 +1,49 @@
 <html>
     <head>
 
+
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <style>
+
+
+            .header {
+                overflow: hidden;
+                background:-webkit-radial-gradient( #F8A4D8 , #6C63FF);
+
+                text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+                padding: 20px 10px;
+                font-size: 18;
+                color: rebeccapurple;
+            } 
+
+            
+
+        </style>
+
     </head>
     <body>
+        <div class="header">
         <h1 align=center>Login</h1>
+    </div>
+
+
+    <div class="card p-5 bg-dark ">
         <form action="/submit1" method="post" align=center>
             <input type="text" name="name" placeholder="Enter your name" required><br><br>
             <input type="password" name="password" placeholder="Enter your password" required><br><br>
             <button>Submit</button> 
 
+            <br>
+            <br>
+            <p style="color: white;"  align=center>New User <a href="{{ url_for('register') }}"> Click Here</a></p>
+            <p style="color: white;"  align=center>Home Page<a href="{{ url_for('index') }}"> Click Here</a></p>
+
         </form>  
+    </div>
+    <!-- <div class="card p-5 bg-dark ">
+        <p style="color: white;"  align=center>New User <a href="{{ url_for('register') }}"> Click Here</a></p>
+    </div> -->
     </body>
 </html>
