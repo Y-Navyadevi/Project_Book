@@ -75,7 +75,7 @@ def submit():
     db.session.commit()
 
 
-    return render_template("login                    .html",users = Test.query.all())
+    return render_template("login.html",users = Test.query.all())
     
 
 
