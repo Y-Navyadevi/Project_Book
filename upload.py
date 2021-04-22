@@ -7,7 +7,7 @@ def main():
     r=csv.reader(data)
     
     for i in r:
-        s=title(isbn=i[0],title=i[1],author=i[2],year=i[3])
+        s=hello(isbn=i[0],title=i[1],author=i[2],year=i[3])
         db.session.add(s)
     db.session.commit()
 

@@ -10,7 +10,9 @@
    <a class="button has-text-danger text-right" href="{{ url_for('login') }}">
       <button type="button" class="btn btn-outline-info btn-lg ">Logout</button>
       </a>
-
+      <a class="button has-text-danger text-right" href="{{ url_for('shelf') }}">
+         <button type="button" class="btn btn-outline-info btn-lg ">Faviroutes</button>
+         </a>
 <div>
 
 
@@ -25,7 +27,8 @@
     <thead>
        
        <tr>
-          <th >Title</th>
+         <th>ISBN</th>
+          <th>Title</th>
           <th>Author</th>
           <th>Year</th>
        </tr>
@@ -34,7 +37,7 @@
       {% for i in users  %}
          {% if i.isbn==name or i.author==name or i.title==name or i.year==name %}
         <tr>
-
+         <th><a href="{{ url_for('review', id=i.isbn)}}"  id={{i.isbn}}>{{i.isbn}}</a></th>
          <td>{{i.title}}</td>
          <td>{{i.author}}</td>
          <td>{{i.year}}</td>

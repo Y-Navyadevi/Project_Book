@@ -46,12 +46,58 @@ def submit1():
 @app.route("/search", methods=["POST"])
 def search():
     name = request.form.get("search")
-    user = title.query.all()
+    user = hello.query.all()
     # for i in user:
     #     if i.isbn==name or i.author==name or i.title==name or i.year==name :
     #         return render_template("hello.html",isbn = i.isbn,title=i.title,author=i.author,year=i.year)
         # else:
     return render_template("hello.html", users=user, name=name)
+
+
+# @app.route("/review")
+# def review():
+#     return render_template("review.html")
+
+@app.route("/review/<string:id>")
+def review(id):
+    print(id)
+    usr = hello.query.all()
+    for i in usr:
+        if id == i.isbn:
+            a = i.isbn
+            b = i.title
+            c = i.author
+            d = i.year
+    return render_template("review.html", isbn = a, title=b,author=c,year=d)
+
+@app.route("/review/<string:isbn>/<string:title>",methods=["POST"])
+def bookshelf(isbn,title):
+    print(isbn)
+    n = request.form.get("name")
+    star = request.form.get("rate")
+    Feedback = request.form.get("text")
+    response = request.form.get("shelf")
+    rev = Review( user=n,isbn=isbn,rating=star,review=Feedback)
+    db.session.add(rev)
+    db.session.commit()
+    if response == "Yes":
+        
+        sh = Bookshelf(user=n,book=title)
+        db.session.add(sh)
+        db.session.commit()
+    else:
+        return render_template("hello.html")
+    return render_template("bookshelf.html", isbn=isbn,n=n,star=star,Feedback=Feedback)
+
+
+
+@app.route("/shelf")
+def shelf():
+    x=Bookshelf.query.all()
+
+    return render_template("shelf.html", c=x)
+
+
 
 
 @app.route("/submit", methods = ["GET","POST"])
