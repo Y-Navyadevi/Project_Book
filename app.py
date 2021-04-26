@@ -30,17 +30,32 @@ def login():
 
 @app.route("/submit1", methods = ["POST"])
 def submit1(): 
-    name = request.form.get("name")
+    session['name'] = request.form.get("name")
     password = request.form.get("password")
     users=Test.query.all()
     for user in users:
-        if user.name==name and check_password_hash(user.password, password):
-            return render_template("hello.html",names=name)
+        if user.name==session['name'] and check_password_hash(user.password, password):
+            return render_template("hello.html",names=session['name'])
         # elif user.name!=name or user.password!=password:
         # else:
         #     return render_template("error.html",names=name)
         # else:
     return render_template('register.html')
+
+@app.route("/back")
+def back():
+    return render_template("hello.html")
+
+
+@app.route("/delete/<string:book>")
+def delete(book):
+    print(book)
+    title_delete = Bookshelf.query.get_or_404(book)
+
+    
+    db.session.delete(title_delete)
+    db.session.commit()
+    return render_template("shelf.html")
 
 
 @app.route("/search", methods=["POST"])
@@ -70,46 +85,46 @@ def review(id):
             d = i.year
     return render_template("review.html", isbn = a, title=b,author=c,year=d)
 
-@app.route("/review/<string:isbn>/<string:title>",methods=["POST"])
-def bookshelf(isbn,title):
-    print(isbn)
-    n = request.form.get("name")
+@app.route("/review/<string:isbn>/<string:title>/<string:id>",methods=["POST"])
+def bookshelf(isbn,title,id):
+    print(isbn,id)
     star = request.form.get("rate")
     Feedback = request.form.get("text")
     response = request.form.get("shelf")
-    rev = Review( user=n,isbn=isbn,rating=star,review=Feedback)
+    rev = Review( user=id,isbn=isbn,rating=star,review=Feedback)
     db.session.add(rev)
     db.session.commit()
     if response == "Yes":
         
-        sh = Bookshelf(user=n,book=title)
+        sh = Bookshelf(user=id,book=title)
         db.session.add(sh)
         db.session.commit()
     else:
         return render_template("hello.html")
-    return render_template("bookshelf.html", isbn=isbn,n=n,star=star,Feedback=Feedback)
+    return render_template("bookshelf.html", isbn=isbn,n=id,star=star,Feedback=Feedback)
 
 
 
-@app.route("/shelf")
-def shelf():
+@app.route("/shelf/<string:id>")
+def shelf(id):
+    print(id)
     x=Bookshelf.query.all()
 
-    return render_template("shelf.html", c=x)
+    return render_template ('shelf.html', y=id , a=x )
 
 
 
 
 @app.route("/submit", methods = ["GET","POST"])
 def submit(): 
-    name = request.form.get("name")
+    session['name'] = request.form.get("name")
     password = request.form.get("password")
     mobile = request.form.get("mobile")
     dob = request.form.get("dob")
     email = request.form.get("email")
     gender = request.form.get("gender")
     timestamp=datetime.now()
-    s= Test(name=name,password=generate_password_hash(password, method='sha256'),mobile=mobile,dob=dob,email=email,gender=gender, timestamp=timestamp)
+    s= Test(session['name'],password=generate_password_hash(password, method='sha256'),mobile=mobile,dob=dob,email=email,gender=gender, timestamp=timestamp)
 
     usern = Test.query.filter_by(email=email).first()
     if usern:  # if a user is found, we want to redirect back to signup page so user can try again

@@ -68,8 +68,8 @@ def __init__(self,user,isbn,rating,review):
 
 class Bookshelf(db.Model):
     __tablename__="book_shelf"
-    user = db.Column(db.String(80),primary_key=True,nullable=False)
-    book = db.Column(db.String(80) , nullable=False)
+    user = db.Column(db.String(80), nullable=False)
+    book = db.Column(db.String(80) , primary_key=True,nullable=False)
     
   
 

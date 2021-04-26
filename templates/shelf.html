@@ -4,32 +4,45 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Document</title>
+    <title>Favourites</title>
 </head>
 <body>
+<h1>Favourites</h1>
+
+<a class="button has-text-danger text-right" href="{{ url_for('back') }}">
+    <button type="button" class="btn btn-outline-info btn-lg ">Back</button>
+    </a>
+
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>User</th>
                 <th>Title</th>
                
-            </tr>
+            </tr> 
         </thead>
-        {% for i in c %}
+        
         <tbody>
+            {% for i in a %}
+           
             <tr>
-                
-                
-                
-                <th>{{i.user}}</th>
+        
                 <td>{{i.book}}</td>
-                
-                
+                <td><a href="/delete/{{i.book}}" class="button is-danger is-light">delete</a></td>
+
             </tr>
+            {% endfor %}
         </tbody>
-        {% endfor %}
+        
     </table>
 
-    
+    <!-- {% for i in a %}
+
+
+            {{i.book}}
+
+
+
+    {% endfor %} -->
+
 </body>
 </html>

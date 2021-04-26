@@ -1,4 +1,11 @@
+
 <li> Isbn= {{isbn}} </li>
 <li>Name= {{n}}</li>
 <li> Rating= {{star}}</li>
 <li> Review={{Feedback}}</li>
+
+
+
+    <button type="button" class="btn btn-outline-info btn-lg "><a class="button has-text-danger text-right" href="{{ url_for('shelf', id=session['name']) }}"  id="{{session['name']}}">
+    
+        Back </a> </button>

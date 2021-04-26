@@ -10,7 +10,7 @@
    <a class="button has-text-danger text-right" href="{{ url_for('login') }}">
       <button type="button" class="btn btn-outline-info btn-lg ">Logout</button>
       </a>
-      <a class="button has-text-danger text-right" href="{{ url_for('shelf') }}">
+      <a class="button has-text-danger text-right" href="{{ url_for('shelf', id=session['name'])}}" id="{{session['name']}}">
          <button type="button" class="btn btn-outline-info btn-lg ">Faviroutes</button>
          </a>
 <div>
